@@ -32,6 +32,7 @@ from .neox_args import (
     NeoXArgsOptimizer,
     NeoXArgsLRScheduler,
     ATTENTION_TYPE_CHOICES,
+    lr_adjustment,
 )
 
 # ZERO defaults by deespeed
