@@ -32,6 +32,7 @@ from .neox_args import (
     NeoXArgsOptimizer,
     NeoXArgsLRScheduler,
     ATTENTION_TYPE_CHOICES,
+    lr_adjustment
 )
 
 # ZERO defaults by deespeed
@@ -681,7 +682,7 @@ class NeoXArgs(*BASE_CLASSES):
         ) = self.calculate_batch_parameters(
             dp_world_size=dp_world_size,
             train_batch=self.train_batch_size,
-            micro_batch=self.train_micro_batch_size_per_gpu,
+            micro_batch=self.train_micro_batch_size_per_gpu*lr_adjustment,
             grad_acc=self.gradient_accumulation_steps,
         )
         self.check_batch_parameters(
